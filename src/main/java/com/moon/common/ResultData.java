@@ -37,9 +37,14 @@ public class ResultData {
         return new ResultData(code, "", null);
     }
 
+    public static ResultData success(String msg) {
+        return new ResultData(CodeEnum.SUCCESS.getCode(), msg, null);
+    }
+
     public static ResultData success(Object data) {
         return new ResultData(CodeEnum.SUCCESS.getCode(), "", data);
     }
+
 
     public static ResultData success(Integer code, String msg) {
         return new ResultData(code, msg, null);

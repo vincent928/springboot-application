@@ -7,6 +7,5 @@ package com.moon.controller.mail;
  */
 public class MailController {
 
-    public static void main(String[] agrs) {
-    }
+
 }

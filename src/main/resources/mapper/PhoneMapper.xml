@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.moon.mapper.PhoneMapper">
+
+
+    <select id="findPhoneByNum" parameterType="java.lang.String" resultType="com.moon.model.phone.PhoneModel">
+        SELECT * FROM tb_phone
+        WHERE phone = #{value}
+    </select>
+
+    <insert id="addNewPhone" parameterType="com.moon.model.phone.PhoneModel">
+        INSERT INTO tb_phone(phone,code,create_time)
+        VALUES (#{phone,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},now())
+    </insert>
+
+</mapper>

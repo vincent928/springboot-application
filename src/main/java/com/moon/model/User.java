@@ -15,6 +15,8 @@ public class User extends BasicModel {
 
     private String username;
     private String password;
+    private String email;
+    private String phone;
     @JsonFormat(pattern = "yyyy-MM-hh HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
     @JsonFormat(pattern = "yyyy-MM-hh HH:mm:ss", timezone = "GMT+8")

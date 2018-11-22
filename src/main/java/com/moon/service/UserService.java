@@ -1,6 +1,7 @@
 package com.moon.service;
 
 import com.moon.common.ResultData;
+import com.moon.model.User;
 
 import java.util.Map;
 
@@ -14,5 +15,5 @@ public interface UserService {
 
     ResultData listUser(Map params);
 
-
+    ResultData addUser(User user);
 }

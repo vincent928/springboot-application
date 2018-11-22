@@ -4,11 +4,20 @@
 <mapper namespace="com.moon.mapper.UserMapper">
 
     <select id="listUser" resultType="com.moon.model.User" parameterType="map">
-      SELECT * FROM tb.user
-      WHERE status = 0
-      <if test="username !=null and username !='' ">
-          username = #{username}
-      </if>
+        SELECT * FROM tb_user
+        WHERE status = 0
+        <if test="username !=null and username !='' ">
+            username = #{username}
+        </if>
     </select>
+
+    <insert id="insertUser" parameterType="com.moon.model.User">
+        INSERT INTO tb_user(username,password,email,phone,create_time)
+        VALUES (
+        #{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},
+        now()
+        )
+    </insert>
 
 </mapper>

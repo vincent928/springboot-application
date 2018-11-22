@@ -14,5 +14,5 @@ public interface UserMapper {
 
     List<User> listUser(Map params);
 
-
+    int insertUser(User user);
 }
