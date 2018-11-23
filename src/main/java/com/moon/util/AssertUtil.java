@@ -18,6 +18,7 @@ public class AssertUtil {
     private static final boolean ASSERT_FALSE = false;
 
     private static final String REGEX_PHONE = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
+    private static final String REGEX_MAIL = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?";
 
     /**
      * 断言对象null工具类
@@ -73,5 +74,23 @@ public class AssertUtil {
         }
         return ASSERT_TRUE;
     }
+
+    /**
+     * 邮箱地址断言
+     *
+     * @param mail
+     * @return
+     */
+    public static boolean assertMail(String mail) {
+        if (StringUtils.isBlank(mail)) {
+            return ASSERT_TRUE;
+        }
+        Pattern compile = Pattern.compile(REGEX_MAIL);
+        if (compile.matcher(mail).matches()) {
+            return ASSERT_FALSE;
+        }
+        return ASSERT_TRUE;
+    }
+
 
 }

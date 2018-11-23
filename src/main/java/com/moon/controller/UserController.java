@@ -3,6 +3,7 @@ package com.moon.controller;
 import com.moon.common.ResultData;
 import com.moon.model.User;
 import com.moon.service.UserService;
+import com.moon.service.mail.MailService;
 import com.moon.service.phone.PhoneService;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,8 @@ public class UserController extends BasicController {
     private UserService userService;
     @Resource
     private PhoneService phoneService;
+    @Resource
+    private MailService mailService;
 
     /**
      * 查询用户列表
@@ -56,5 +59,19 @@ public class UserController extends BasicController {
         return phoneService.getPhoneCode(phone);
     }
 
+    /**
+     * 获取mail验证地址
+     *
+     * @param mail
+     * @return
+     */
+    @RequestMapping(value = "/mail/check/address", method = RequestMethod.POST)
+    public ResultData mailCheck(@RequestParam Integer id, @RequestParam String mail) {
+        return mailService.getMailCheckAddress(id, mail);
+    }
 
+    @RequestMapping(value = "/mail/check/active", method = RequestMethod.GET)
+    public ResultData mailActive(@RequestParam("id") Integer id, @RequestParam("code") String code) {
+        return mailService.mailActive(id, code);
+    }
 }

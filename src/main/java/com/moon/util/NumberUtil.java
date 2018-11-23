@@ -2,6 +2,8 @@ package com.moon.util;
 
 import org.apache.commons.lang3.RandomUtils;
 
+import java.util.UUID;
+
 /**
  * Author : moon
  * Date  : 2018/11/21 13:40
@@ -26,6 +28,15 @@ public class NumberUtil {
     public static String getPhoneCode(int size) {
         String code = String.valueOf(RandomUtils.nextInt((int) Math.pow(10, size - 1) - 1, (int) Math.pow(10, size)));
         return code;
+    }
+
+    /**
+     * 唯一UUID生成
+     *
+     * @return
+     */
+    public static String getUUID() {
+        return UUID.randomUUID().toString().replace("-", "");
     }
 
 }
