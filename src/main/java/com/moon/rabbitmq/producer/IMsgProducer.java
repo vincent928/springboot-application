@@ -16,6 +16,11 @@ public interface IMsgProducer extends RabbitTemplate.ConfirmCallback {
      */
     void send(Object msg, ExchangeEnum exchangeEnum, RoutingKeyEnum routingKeyEnum) throws Exception;
 
-
-
+    /**
+     * 发送消息到广播
+     * @param msg
+     * @param exchangeEnum
+     * @throws Exception
+     */
+    void sendAll(Object msg,ExchangeEnum exchangeEnum) throws Exception;
 }

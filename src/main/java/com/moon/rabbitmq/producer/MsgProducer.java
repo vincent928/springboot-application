@@ -41,6 +41,12 @@ public class MsgProducer implements IMsgProducer {
         rabbitTemplate.convertAndSend(exchangeEnum.getValue(), routingKeyEnum.getValue(), msg, correlationId);
     }
 
+    @Override
+    public void sendAll(Object msg, ExchangeEnum exchangeEnum) throws Exception {
+        CorrelationData correlationId = new CorrelationData(UUID.randomUUID().toString());
+        rabbitTemplate.convertAndSend(exchangeEnum.getValue(), "", msg,correlationId);
+    }
+
     /**
      * 回调
      *

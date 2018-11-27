@@ -3,10 +3,7 @@ package com.moon.config;
 import com.moon.enums.rabbitmq.ExchangeEnum;
 import com.moon.enums.rabbitmq.QueueEnum;
 import com.moon.enums.rabbitmq.RoutingKeyEnum;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -119,5 +116,28 @@ public class RabbitmqConfig {
     public Binding bindingB() {
         return BindingBuilder.bind(queueB()).to(defaultExchange()).with(RoutingKeyEnum.ROUTINGKEY_B.getValue());
     }
+
+
+    /**
+     * FanoutExchange ：广播模式，给FanoutExchange发送消息，则绑定了该交换机的所有队列都将收到消息
+     */
+    @Bean
+    FanoutExchange fanoutExchange() {
+        return new FanoutExchange(ExchangeEnum.FANOUT_EXCHANGE.getValue());
+    }
+
+    /**
+     * 将所有的队列均绑定到该交换机上
+     */
+    @Bean
+    Binding bindingExchangeA() {
+        return BindingBuilder.bind(queueA()).to(fanoutExchange());
+    }
+
+    @Bean
+    Binding bindingExchangeB() {
+        return BindingBuilder.bind(queueB()).to(fanoutExchange());
+    }
+
 
 }

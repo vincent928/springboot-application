@@ -9,8 +9,9 @@ public enum ExchangeEnum {
 
     EXCHANGE_A("my-mq-exchange_A"),
     EXCHANGE_B("my-mq-exchange_B"),
-    EXCHANGE_C("my-mq-exchange_C");
-
+    EXCHANGE_C("my-mq-exchange_C"),
+    FANOUT_EXCHANGE("my-mq-fanout-exchange"),
+    ;
     private String value;
 
     ExchangeEnum(String value) {
