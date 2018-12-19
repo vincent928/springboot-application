@@ -16,4 +16,8 @@ public interface UserService {
     ResultData listUser(Map params);
 
     ResultData addUser(User user);
+
+    ResultData login(String username, String password);
+
+    ResultData checkToken(String token);
 }

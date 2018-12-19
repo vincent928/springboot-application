@@ -70,8 +70,44 @@ public class UserController extends BasicController {
         return mailService.getMailCheckAddress(id, mail);
     }
 
+    /**
+     * 邮箱验证
+     *
+     * @param id
+     * @param code
+     * @return
+     */
     @RequestMapping(value = "/mail/check/active", method = RequestMethod.GET)
     public ResultData mailActive(@RequestParam("id") Integer id, @RequestParam("code") String code) {
         return mailService.mailActive(id, code);
     }
+
+
+    /**
+     * ---------------------------------------单点登录----------------------------------------------
+     */
+
+    /**
+     * 用户登录
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResultData login(String username, String password) {
+        return userService.login(username, password);
+    }
+
+    /**
+     * Token检查
+     *
+     * @param token
+     * @return
+     */
+    @RequestMapping(value = "/token/check", method = RequestMethod.POST)
+    public ResultData checkToken(@RequestParam(value = "token") String token) {
+        return userService.checkToken(token);
+    }
+
 }

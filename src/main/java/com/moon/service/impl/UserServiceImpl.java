@@ -50,4 +50,20 @@ public class UserServiceImpl implements UserService {
         }
         return ResultData.success(users);
     }
+
+
+    @Override
+    public ResultData login(String username, String password) {
+        //正常登录
+        //登录成功以后 生成token
+        //将Token设置为key,对应的value就是用户信息
+        return null;
+    }
+
+    @Override
+    public ResultData checkToken(String token) {
+        //从redis中获取token对应的用户信息
+        //没有就返回登录失败,有就返回用户信息
+        return null;
+    }
 }
